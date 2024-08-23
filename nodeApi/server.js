@@ -1,5 +1,5 @@
 import { app } from "./app.js";
-import { DBConnect } from "./data/batabase.js";
+import { DBConnect } from "./data/database.js";
 
 DBConnect();
 

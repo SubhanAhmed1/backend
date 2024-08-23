@@ -1,22 +1,17 @@
 import express from "express";
-import { User } from "../model/user.js";
-import bcrypt from "bcrypt";
-import { getAllUser, getNewUser, getUserbyId } from "../controller/user.js";
+import { getAllUser, register ,login, getMyProfile,logout} from "../controller/user.js";
+import { isAuthentication } from "../middleware/auth.js";
 
 const router=express.Router();
 
 
-router.post("/new",getNewUser);
-
-
-router.get("/",(req,res)=>{
-    res.send("Nice working");
-});
+router.post("/new",register);
 
 router.get("/all",getAllUser);
+router.post("/login",login);
+router.get("/me",isAuthentication,getMyProfile);
+router.get("/logout",logout);
 
-router.get("/:id",getUserbyId);
 
 
-
-export default router
+export default router;
