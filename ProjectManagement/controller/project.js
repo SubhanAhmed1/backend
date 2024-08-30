@@ -146,6 +146,7 @@ export const deleteProject = async (req, res, next) => {
     }
 
     // Delete all project related to the project
+    await Task.deleteMany({ project: project._id });
     await project.deleteMany({ projectId: project._id });
 
     // Now delete the project

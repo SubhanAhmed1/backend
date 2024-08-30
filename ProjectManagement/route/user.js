@@ -5,9 +5,9 @@ import { isAuthentication } from "../middleware/auth.js";
 const router=express.Router();
 
 
-router.post("/new",register);
+router.post("/registration",register);
 
-router.get("/all",getAllUser);
+router.get("/all",isAuthentication,getAllUser);
 router.post("/login",login);
 router.get("/me",isAuthentication,getMyProfile);
 router.get("/logout",logout);

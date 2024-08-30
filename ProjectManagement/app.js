@@ -21,6 +21,6 @@ app.use(cookieParser());
 // import routes of the apps
 app.use("/api/v1/users",userRouter);
 app.use("/api/v1/task",taskRouter);
-app.use("/api/v1/users/project",projectRouter)
+app.use("/api/v1/project",projectRouter)
 
 app.use(errorMiddleWare);

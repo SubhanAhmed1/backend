@@ -103,6 +103,10 @@ export const updateTaskByEmployee = async (req, res, next) => {
     const task = await Task.findById(req.params.id);
     if (!task) return next(new ErrorHandler("Task Not Found", 404));
 
+    if (!task.assignedEmployees.includes(req.user._id)) {
+      return next(new ErrorHandler("Unauthorized Access", 403));
+    }
+
     // Check if the user is in the assignedEmployees list
     if (!task.assignedEmployees.equals(req.user._id)) {
       return next(new ErrorHandler("Unauthorized Access", 403));
